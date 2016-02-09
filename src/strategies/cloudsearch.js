@@ -4,13 +4,12 @@
 const Aws = require('aws-sdk');
 
 // Load internal modules
-const config = require('config')
-
+const config = require('config');
 Aws.config.update(config.get('aws'));
 
 class CloudSearchStrategy {
   constructor(options) {
-    this._csd = new Aws.CloudSearchDomain(options.awsCloudSearchDomain.ideaDomain);
+    this._csd = new Aws.CloudSearchDomain(options);
   }
 
   uploadDocuments(params) {

@@ -4,10 +4,10 @@
 const Joi = require('joi');
 
 // Load internal modules
-let Search = require('./search')
+let Search = require('./search');
 
 exports.register = function (server, options, next) {
-  const result = _validateOptions(options)
+  const result = _validateOptions(options);
   if (result.error) {
     return next(result.error);
   }
@@ -25,7 +25,8 @@ exports.register.attributes = {
 function _validateOptions(options) {
   const schema = {
     region: Joi.string(),
-    cloudsearchdomain: Joi.string().regex(/^[0-9]{4}-[0-9]{2}-[0-9]{2}/)
+    apiVersion: Joi.string().regex(/^[0-9]{4}-[0-9]{2}-[0-9]{2}/),
+    endpoint: Joi.string()
   };
   return Joi.validate(options, schema);
 }

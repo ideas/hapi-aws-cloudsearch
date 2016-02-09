@@ -1,18 +1,13 @@
 'use strict';
 
-// Load external modules
-const Aws = require('aws-sdk');
-const Uuid = require('node-uuid');
-
 class StubStrategy {
   constructor(options) {
-    this._sqs = new Aws.SQS(options);
   }
 
-  sendMessage(params) {
+  uploadDocuments(params) {
+    // TODO what should be the return value?
     return Promise.resolve({
-      MD5OfMessageBody: Aws.util.crypto.md5(params.MessageBody),
-      MessageId: Uuid.v4()
+      status: true
     });
   }
 }

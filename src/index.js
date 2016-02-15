@@ -4,7 +4,17 @@
 const Joi = require('joi');
 
 // Load internal modules
-let Search = require('./search');
+const Search = require('./search');
+
+function _validateOptions(options) {
+  const schema = {
+    region: Joi.string(),
+    endpoint: Joi.string().uri().required()
+  };
+  return Joi.validate(options, schema, {
+    allowUnknown: true
+  });
+}
 
 exports.register = function (server, options, next) {
   const result = _validateOptions(options);
@@ -12,7 +22,7 @@ exports.register = function (server, options, next) {
     return next(result.error);
   }
 
-  let search = new Search(result.value);
+  const search = new Search(result.value);
   server.expose('search', search);
 
   next();
@@ -21,12 +31,3 @@ exports.register = function (server, options, next) {
 exports.register.attributes = {
   name: 'hapi-aws-cloudsearch'
 };
-
-function _validateOptions(options) {
-  const schema = {
-    region: Joi.string(),
-    apiVersion: Joi.string().regex(/^[0-9]{4}-[0-9]{2}-[0-9]{2}/),
-    endpoint: Joi.string()
-  };
-  return Joi.validate(options, schema);
-}

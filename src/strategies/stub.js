@@ -5,9 +5,29 @@ class StubStrategy {
   }
 
   uploadDocuments(params) {
-    // TODO what should be the return value?
-    return Promise.resolve({
-      status: true
+    return new Promise((resolve, reject) => {
+      if (!params) {
+        return reject('no params');
+      }
+      return resolve({ status: true });
+    });
+  }
+
+  search(params) {
+    return new Promise((resolve, reject) => {
+      if (!params) {
+        return reject('no params');
+      }
+      return resolve({ status: true });
+    });
+  }
+
+  addDocument(params) {
+    return new Promise((resolve, reject) => {
+      if (!params) {
+        return reject('no params');
+      }
+      return resolve({ status: true });
     });
   }
 }

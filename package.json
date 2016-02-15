@@ -25,7 +25,8 @@
     "aws-sdk": "2.2.x",
     "config": "^1.19.0",
     "joi": "7.1.x",
-    "node-uuid": "1.4.x"
+    "node-uuid": "1.4.x",
+    "twitter-text": "^1.13.3"
   },
   "devDependencies": {
     "@ideapod/eslint-config": "ideas/eslint-config",

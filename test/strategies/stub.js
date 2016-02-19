@@ -76,29 +76,4 @@ lab.describe('StubStrategy', () => {
         });
     });
   });
-
-  lab.describe('addDocument', () => {
-    lab.it('can add a document', (done) => {
-      const params = {
-        contentType: 'application/json',
-        documents: JSON.stringify([{ 'bar': 'foo' }])
-      };
-      strategy.addDocument(params)
-        .then((data) => {
-          expect(data.status).to.be.true();
-          done();
-        })
-        .catch(done);
-    });
-    lab.it('reject error if no params', (done) => {
-      strategy.search()
-        .then((done) => {
-          done(new Error('error hasn\'t been thrown'));
-        })
-        .catch((err) => {
-          expect(err).to.exist();
-          done();
-        });
-    });
-  });
 });

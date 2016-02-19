@@ -13,22 +13,18 @@ const StubStrategy = require('../src/strategies/stub');
 const lab = exports.lab = Lab.script();
 const expect = Lab.assertions.expect;
 
-let searchParams;
 let search;
 
-lab.describe('#Search class', () => {
+lab.describe('Search class', () => {
   lab.describe('constructor', () => {
-    lab.beforeEach((done) => {
-      searchParams = {
-        region: 'us-west-1',
-        endpoint: 'https://www.ideapod.com'
-      };
-      done();
-    });
+    const searchParams = {
+      region: 'us-west-1',
+      endpoint: 'http://ec2.us-west-1.amazonaws.com'
+    };
 
     lab.it('constructs a Search object from this class', (done) => {
       search = new Search(searchParams);
-      expect(search._settings.endpoint).to.equal('https://www.ideapod.com');
+      expect(search._settings.endpoint).to.equal('http://ec2.us-west-1.amazonaws.com');
       done();
     });
 
@@ -48,15 +44,12 @@ lab.describe('#Search class', () => {
   });
 
   lab.describe('uploadDocuments', () => {
-    lab.beforeEach((done) => {
-      search = new Search({
-        region: 'us-west-1',
-        endpoint: 'https://www.ideapod.com'
-      });
-      done();
-    });
     lab.it('call its strategies uploadDocuments method', (done) => {
-      // TODO How can I unit test this? In this case, we should use rewire.
+      const search = new Search({
+        region: 'us-west-1',
+        endpoint: 'http://ec2.us-west-1.amazonaws.com'
+      }, true);
+      search.uploadDocuments();
       done();
     });
   });

@@ -1,39 +1,35 @@
 {
-  "name": "@ideapod/hapi-aws-sqs",
-  "version": "0.0.1",
-  "description": "AWS SQS integration plugin for hapi.",
+  "name": "@ideapod/hapi-aws-cloudsearch",
+  "version": "0.0.0",
+  "description": "AWS CloudSearch plugin for hapi.",
   "main": "src/index.js",
   "scripts": {
     "test": "lab --assert code --lint --threshold 100 --verbose"
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/ideas/hapi-aws-sqs.git"
+    "url": "git+https://github.com/ideas/hapi-aws-cloudsearch.git"
   },
   "keywords": [
     "hapi",
     "aws",
-    "sqs",
-    "queue"
+    "cloudsearch"
   ],
   "license": "MIT",
   "bugs": {
-    "url": "https://github.com/ideas/hapi-aws-sqs/issues"
+    "url": "https://github.com/ideas/hapi-aws-cloudsearch/issues"
   },
-  "homepage": "https://github.com/ideas/hapi-aws-sqs#readme",
+  "homepage": "https://github.com/ideas/hapi-aws-cloudsearch#readme",
   "dependencies": {
     "aws-sdk": "2.2.x",
-    "config": "^1.19.0",
     "joi": "7.1.x",
-    "node-uuid": "1.4.x",
-    "twitter-text": "^1.13.3"
+    "node-uuid": "1.4.x"
   },
   "devDependencies": {
     "@ideapod/eslint-config": "ideas/eslint-config",
     "code": "2.1.x",
     "hapi": "12.0.x",
     "lab": "8.0.x",
-    "mock-aws": "1.2.x",
-    "rewire": "^2.5.1"
+    "mock-aws": "1.2.x"
   }
 }

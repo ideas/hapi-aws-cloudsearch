@@ -11,31 +11,31 @@ const HapiAwsCloudsearch = require('..');
 const lab = exports.lab = Lab.script();
 const expect = Lab.assertions.expect;
 
-let server;
-let plugin;
 
 lab.describe('HapiAwsCloudsearch', () => {
   lab.describe('register', () => {
-    lab.beforeEach((done) => {
-      server = new Hapi.Server();
-      plugin = {
+    lab.it('registers this hapi plugin', (done) => {
+      const server = new Hapi.Server();
+      const plugin = {
         register: HapiAwsCloudsearch,
         options: {
           region: 'us-west-1',
-          endpoint: 'https://www.ideapod.com'
+          endpoint: 'http://ec2.us-west-1.amazonaws.com'
         }
       };
-      done();
-    });
-    lab.it('registers this hapi plugin', (done) => {
       server.register(plugin, (err) => {
         expect(err).to.not.exist();
         expect(server.plugins['hapi-aws-cloudsearch'].search).to.be.object();
         done();
       });
     });
+
     lab.it('throws an error if params are invalid', (done) => {
-      plugin.options = 0;
+      const server = new Hapi.Server();
+      const plugin = {
+        register: HapiAwsCloudsearch,
+        options: 0
+      };
       server.register(plugin, (err) => {
         expect(err).to.exist();
         expect(server.plugins['hapi-aws-cloudsearch']).to.not.exist();

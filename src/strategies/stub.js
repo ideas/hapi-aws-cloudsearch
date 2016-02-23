@@ -1,8 +1,6 @@
 'use strict';
 
 class StubStrategy {
-  constructor(options) {
-  }
 
   uploadDocuments(params) {
     return new Promise((resolve, reject) => {

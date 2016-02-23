@@ -11,29 +11,17 @@ const StubStrategy = require('../../src/strategies/stub');
 const lab = exports.lab = Lab.script();
 const expect = Lab.assertions.expect;
 
-let strategy;
-
 lab.after((done) => {
   MockAWS.restore();
   done();
 });
 
-lab.before((done) => {
-  strategy = new StubStrategy({
-    region: 'us-west-1',
-    endpoint: 'https://www.ideapod.com'
-  });
-  done();
-});
-
 lab.describe('StubStrategy', () => {
+  const strategy = new StubStrategy();
+
   lab.describe('uploadDocuments', () => {
     lab.it('upload a document', (done) => {
-      const params = {
-        contentType: 'application/json',
-        documents: JSON.stringify([{ 'bar': 'foo' }])
-      };
-      strategy.uploadDocuments(params)
+      strategy.uploadDocuments({})
         .then((data) => {
           expect(data.status).to.be.true();
           done();
@@ -42,9 +30,6 @@ lab.describe('StubStrategy', () => {
     });
     lab.it('reject error if no params', (done) => {
       strategy.uploadDocuments()
-        .then((done) => {
-          done(new Error('error hasn\'t been thrown'));
-        })
         .catch((err) => {
           expect(err).to.exist();
           done();
@@ -54,11 +39,7 @@ lab.describe('StubStrategy', () => {
 
   lab.describe('search', () => {
     lab.it('can search a document', (done) => {
-      const params = {
-        contentType: 'application/json',
-        documents: JSON.stringify([{ 'bar': 'foo' }])
-      };
-      strategy.search(params)
+      strategy.search({})
         .then((data) => {
           expect(data.status).to.be.true();
           done();
@@ -67,9 +48,6 @@ lab.describe('StubStrategy', () => {
     });
     lab.it('reject error if no params', (done) => {
       strategy.search()
-        .then((done) => {
-          done(new Error('error hasn\'t been thrown'));
-        })
         .catch((err) => {
           expect(err).to.exist();
           done();

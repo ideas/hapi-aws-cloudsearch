@@ -49,8 +49,23 @@ lab.describe('Search class', () => {
         region: 'us-west-1',
         endpoint: 'http://ec2.us-west-1.amazonaws.com'
       }, true);
-      search.uploadDocuments();
-      done();
+      search.uploadDocuments({}).then((res) => {
+        expect(res.status).to.be.true();
+        done();
+      });
+    });
+  });
+
+  lab.describe('search', () => {
+    lab.it('call its strategies search method', (done) => {
+      const search = new Search({
+        region: 'us-west-1',
+        endpoint: 'http://ec2.us-west-1.amazonaws.com'
+      }, true);
+      search.search({}).then((res) => {
+        expect(res.status).to.be.true();
+        done();
+      });
     });
   });
 });

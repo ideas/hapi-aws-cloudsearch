@@ -10,13 +10,12 @@ class Search {
     this._strategy = simulate ? new StubStrategy(options) : new CloudSearchStrategy(options);
   }
 
-  uploadDocuments(searchContent) {
-    const params = {
-      contentType: 'application/json',
-      documents: JSON.stringify([searchContent])
-    };
+  uploadDocuments(params) {
+    return this._strategy.uploadDocuments(params);
+  }
 
-    return this._strategy.uploadDocuments(this._settings, params);
+  search(params) {
+    return this._strategy.search(params);
   }
 
 }

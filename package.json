@@ -1,0 +1,35 @@
+{
+  "name": "@ideapod/hapi-aws-cloudsearch",
+  "version": "0.0.0",
+  "description": "AWS CloudSearch plugin for hapi.",
+  "main": "src/index.js",
+  "scripts": {
+    "test": "lab --assert code --lint --threshold 100 --verbose"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/ideas/hapi-aws-cloudsearch.git"
+  },
+  "keywords": [
+    "hapi",
+    "aws",
+    "cloudsearch"
+  ],
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/ideas/hapi-aws-cloudsearch/issues"
+  },
+  "homepage": "https://github.com/ideas/hapi-aws-cloudsearch#readme",
+  "dependencies": {
+    "aws-sdk": "2.2.x",
+    "joi": "7.1.x",
+    "node-uuid": "1.4.x"
+  },
+  "devDependencies": {
+    "@ideapod/eslint-config": "ideas/eslint-config",
+    "code": "2.1.x",
+    "hapi": "12.0.x",
+    "lab": "8.0.x",
+    "mock-aws": "1.2.x"
+  }
+}

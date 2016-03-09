@@ -19,8 +19,10 @@ lab.describe('HapiAwsCloudsearch', () => {
       const plugin = {
         register: HapiAwsCloudsearch,
         options: {
-          region: 'us-west-1',
-          endpoint: 'http://ec2.us-west-1.amazonaws.com'
+          search: {
+            region: 'u7-west-1',
+            endpoint: 'http://ec2.us-west-1.amazonaws.com'
+          }
         }
       };
       server.register(plugin, (err) => {
@@ -34,7 +36,11 @@ lab.describe('HapiAwsCloudsearch', () => {
       const server = new Hapi.Server();
       const plugin = {
         register: HapiAwsCloudsearch,
-        options: 0
+        options: {
+          search: {
+            region: 'u7-west-1'
+          }
+        }
       };
       server.register(plugin, (err) => {
         expect(err).to.exist();

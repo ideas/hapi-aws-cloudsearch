@@ -17,12 +17,12 @@ function _validateOptions(options) {
 }
 
 exports.register = function (server, options, next) {
-  const result = _validateOptions(options);
+  const result = _validateOptions(options.search);
   if (result.error) {
     return next(result.error);
   }
 
-  const search = new Search(result.value);
+  const search = new Search(result.value, options.simulate);
   server.expose('search', search);
 
   next();
